@@ -24,22 +24,23 @@ command -v lipo >/dev/null || {
 }
 
 case "$profile" in
-  debug) cargo_profile_args=() ;;
-  release) cargo_profile_args=(--release) ;;
+  debug|release) ;;
   *) echo "error: FLINGDLNA_FFI_PROFILE must be debug or release" >&2; exit 1 ;;
 esac
-
-feature_args=()
-if [[ -n "$features" ]]; then
-  feature_args=(--features "$features")
-fi
 
 export MACOSX_DEPLOYMENT_TARGET="${MACOSX_DEPLOYMENT_TARGET:-14.0}"
 export FLINGDLNA_BUILD_TIME="${FLINGDLNA_BUILD_TIME:-$(date -u +"%Y-%m-%dT%H:%M:%SZ")}"
 
 cd "$core_dir"
 for target in aarch64-apple-darwin x86_64-apple-darwin; do
-  cargo build -p flingdlna-ffi --target "$target" "${cargo_profile_args[@]}" "${feature_args[@]}"
+  cargo_args=(-p flingdlna-ffi --target "$target")
+  if [[ "$profile" == "release" ]]; then
+    cargo_args+=(--release)
+  fi
+  if [[ -n "$features" ]]; then
+    cargo_args+=(--features "$features")
+  fi
+  cargo build "${cargo_args[@]}"
 done
 
 library_name="libflingdlna_ffi.a"
