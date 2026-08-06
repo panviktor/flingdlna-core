@@ -19,8 +19,7 @@
       ├── dlna-server/              # DMS: Media Server + metadata (mp4/matroska)
       ├── dlna-controller/          # DMC: Controller + UPnP Events
       ├── dlna-combo/               # Unified API + Daemon + Queue
-      ├── flingdlna-ffi/            # C FFI для iOS/macOS приложений
-      └── flingdlna-telegram/       # Telegram Bot (teloxide)
+      └── flingdlna-ffi/            # C FFI для iOS/macOS приложений
 
   ---
   1. dlna-core — Ядро библиотеки
@@ -266,7 +265,7 @@
   - НЕ включает `daemon` feature (Unix sockets не нужны)
   - НЕ включает CLI зависимости (clap, ratatui, crossterm)
   - Включает `chromecast` по умолчанию
-  - Опционально включает `telegram` (default)
+  - Telegram-интеграция реализована в Swift-клиенте macOS и не входит в Rust-ядро или C FFI
 
   Файлы:
 
@@ -388,4 +387,3 @@
   3. dlna-controller/src/transport.rs — AVTransport SOAP
   4. dlna-server/src/content_directory.rs — ContentDirectory Browse
   5. dlna-server/src/didl.rs — DIDL-Lite XML формат
-
