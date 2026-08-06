@@ -1,0 +1,40 @@
+name: Core CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  security:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: gitleaks/gitleaks-action@v2
+      - name: Verify release tree policy
+        run: ./scripts/audit-open-source.sh
+
+  rust:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@1.88.0
+        with:
+          components: rustfmt, clippy
+          targets: aarch64-apple-darwin, x86_64-apple-darwin
+      - run: cargo fmt --check
+      - run: cargo clippy --workspace --all-targets -- -D warnings
+      - run: cargo test --workspace
+      - run: cargo install cargo-deny --locked
+      - run: cargo deny check licenses bans sources
+      - run: cargo install cargo-about --locked --features cli
+      - run: cargo install cargo-cyclonedx --locked
+      - run: ./scripts/generate-third-party-materials.sh
+      - run: git diff --exit-code -- THIRD_PARTY_NOTICES.md SBOM.json crates/*/SBOM.json
+      - run: cargo install cbindgen --locked
+      - run: FLINGDLNA_FFI_OUTPUT_DIR="$RUNNER_TEMP/flingdlna-ffi" ./scripts/build-ffi.sh

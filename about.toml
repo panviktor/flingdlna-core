@@ -1,0 +1,18 @@
+# Accepted licenses for generation of distributable third-party notices.
+# This must remain aligned with deny.toml, which is the publication gate.
+accepted = [
+    "MIT",
+    "Apache-2.0",
+    "Apache-2.0 WITH LLVM-exception",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "MPL-2.0",
+    "OpenSSL",
+    "Unicode-DFS-2016",
+    "Unicode-3.0",
+    "Unlicense",
+    "0BSD",
+    "Zlib",
+    "CC0-1.0",
+]

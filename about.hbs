@@ -1,0 +1,23 @@
+# Third-party notices for FlingDLNA Core
+
+Generated from the locked Cargo dependency graph. Do not edit by hand.
+
+FlingDLNA source is MIT licensed; this file does not relicense its
+dependencies. The dependency policy in `deny.toml` rejects strong copyleft
+licenses. The locked graph contains one unmodified MPL-2.0 component
+(`option-ext`); retain the applicable source and notice when distributing a
+binary.
+
+{{#each licenses}}
+## {{name}}
+
+{{#each used_by}}
+- {{crate.name}} {{crate.version}}
+{{/each}}
+
+{{#each text}}
+```text
+{{this}}
+```
+{{/each}}
+{{/each}}

@@ -1,0 +1,39 @@
+# Build artifacts
+/target/
+**/*.rs.bk
+*.profraw
+*.profdata
+/dist/
+
+# Cargo lock for binaries is tracked
+# Cargo.lock
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+
+# Daemon socket
+*.sock
+
+# Logs
+*.log
+
+# Environment (contains secrets like TELOXIDE_TOKEN)
+.env
+.env.*
+
+# Database
+*.db
+*.sqlite
+
+# Claude Code
+.claude/
+
+# Generated release material
+THIRD_PARTY_NOTICES.generated.md

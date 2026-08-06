@@ -1,0 +1,35 @@
+[graph]
+all-features = true
+
+[advisories]
+version = 2
+unmaintained = "workspace"
+ignore = []
+
+[licenses]
+version = 2
+confidence-threshold = 0.8
+allow = [
+    "MIT",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "ISC",
+    "Zlib",
+    "Unicode-DFS-2016",
+    "Unicode-3.0",
+    "OpenSSL",
+    # The only copyleft entry in the locked graph is MPL-2.0 (option-ext),
+    # which is file-level and may be distributed as an unmodified component
+    # with its notice. Strong copyleft licenses remain rejected.
+    "MPL-2.0",
+    "CC0-1.0",
+]
+
+[bans]
+multiple-versions = "warn"
+wildcards = "allow"
+
+[sources]
+unknown-registry = "deny"
+unknown-git = "deny"
