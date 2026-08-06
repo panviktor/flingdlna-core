@@ -18,7 +18,7 @@
     ],
     "component": {
       "type": "library",
-      "bom-ref": "path+file:///Users/viktor/Work/dlnas/flingdlna-core/crates/dlna-core#0.1.0",
+      "bom-ref": "path+file://./crates/dlna-core#0.1.0",
       "author": "FlingDLNA contributors",
       "name": "dlna-core",
       "version": "0.1.0",
@@ -33,7 +33,7 @@
       "components": [
         {
           "type": "library",
-          "bom-ref": "path+file:///Users/viktor/Work/dlnas/flingdlna-core/crates/dlna-core#0.1.0 bin-target-0",
+          "bom-ref": "path+file://./crates/dlna-core#0.1.0 bin-target-0",
           "name": "dlna_core",
           "version": "0.1.0",
           "purl": "pkg:cargo/dlna-core@0.1.0?download_url=file://.#src/lib.rs"
@@ -5688,7 +5688,7 @@
   ],
   "dependencies": [
     {
-      "ref": "path+file:///Users/viktor/Work/dlnas/flingdlna-core/crates/dlna-core#0.1.0",
+      "ref": "path+file://./crates/dlna-core#0.1.0",
       "dependsOn": [
         "registry+https://github.com/rust-lang/crates.io-index#chrono@0.4.42",
         "registry+https://github.com/rust-lang/crates.io-index#dirs@5.0.1",
